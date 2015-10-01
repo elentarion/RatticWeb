@@ -87,6 +87,7 @@ class Cred(models.Model):
     iconname = models.CharField(verbose_name=_('Icon'), default='Key.png', max_length=64)
     ssh_key = SizedFileField(verbose_name=_('SSH key'), storage=CredAttachmentStorage(), max_upload_size=settings.RATTIC_MAX_ATTACHMENT_SIZE, null=True, blank=True, upload_to='not required')
     attachment = SizedFileField(verbose_name=_('Attachment'), storage=CredAttachmentStorage(), max_upload_size=settings.RATTIC_MAX_ATTACHMENT_SIZE, null=True, blank=True, upload_to='not required')
+    expire_time = models.PositiveIntegerField(verbose_name=_('Expire Time (in days)'), blank=True, null=True, default=None)
 
     # Application controlled fields
     is_deleted = models.BooleanField(default=False, db_index=True)
